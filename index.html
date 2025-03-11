@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rwanda Coding Academy Newsletter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        /* css variables */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        
+        .logo img {
+           display: inline-block;
+           text-align: center;
+           position: relative;
+           top: 15px;
+        }
+        
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin-top: 1rem;
+        }
+        
+        .cta-button:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .nav-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+            position: relative;
+        }
+        .nav-links li::after {
+              width: 100%;
+              height: 2px;
+              background-color: var(--primary, #007bff);
+              content: "";
+              position: absolute;
+              bottom: -2px;
+              left: -3px;
+              transform: scaleX(0);
+              transition: transform 0.3s ease;
+}
+
+.nav-links li:hover::after {
+    transform: scaleX(1);
+}
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+        }
+        
+        .section {
+            margin-bottom: 4rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 25%;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Featured Story Section */
+        .featured-story {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .featured-image {
+            height: 600px;
+            overflow: hidden;
+        }
+        
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .featured-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .featured-content {
+            padding: 2rem;
+        }
+        
+        .featured-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .featured-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .read-more {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .read-more:hover {
+            background-color: #2980b9;
+        }
+        
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .news-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .news-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .news-card:hover .news-image img {
+            transform: scale(1.1);
+        }
+        
+        .news-content {
+            padding: 1.5rem;
+        }
+        
+        .news-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .news-date {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        /* Student Spotlight */
+        .student-spotlight {
+            background-color: var(--light);
+            padding: 3rem;
+            border-radius: 10px;
+        }
+        
+        .students-slider {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .students-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .student-card {
+            flex: 0 0 100%;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .student-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .student-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+        
+        .student-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .student-details h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+            color: var(--primary);
+        }
+        
+        .student-details .student-year {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .slider-control {
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .slider-control:hover {
+            background-color: var(--secondary);
+        }
+        
+        /* Campus Map */
+        .campus-map {
+            position: relative;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        /* Video Section */
+        .video-section {
+            position: relative;
+            height: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .video-content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 2rem;
+        }
+        
+        .video-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .play-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .play-btn:hover {
+            transform: scale(1.1);
+            background-color: #c0392b;
+        }
+        
+        .video-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .video-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 80%;
+            max-width: 900px;
+            padding-top: 45%;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .close-video {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .close-video:hover {
+            color: var(--secondary);
+        }
+        
+        /* Events Section */
+        .events-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .event-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .event-date {
+            background-color: var(--secondary);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .event-day {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        
+        .event-month {
+            font-size: 1rem;
+        }
+        
+        .event-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .event-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .event-time-location {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+        
+        .event-time-location div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .event-time-location span {
+            margin-left: 0.5rem;
+        }
+        
+        .event-content .read-more {
+            margin-top: auto;
+            align-self: flex-start;
+        }
+        
+        /* Newsletter Signup */
+        .newsletter-signup {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .newsletter-signup h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter-signup p {
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex-grow: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 1rem;
+        }
+        #events h2 {
+            margin-left: 200px;
+        }
+        .newsletter-form button {
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 0 30px 30px 0;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #c0392b;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .contact-info div {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info span {
+            margin-left: 0.8rem;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin-right: 1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+        }
+        .image {
+            display: flex;
+            text-align: center;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            gap: 10px;
+        }
+        
+        .image img {
+            display: inline-block;
+            margin-right: 19px;
+            width: 300px;
+            /* Start with a slightly larger scale */
+            transform-origin: center center;
+            transition: all .3s ease-in-out;
+        }
+        
+        .image img:hover {
+            /* Zoom out to normal size on hover */
+            transform: scale(0.9);
+        }
+        
+        .event_1 {
+            margin: 0 auto;
+            max-width: 1000px;
+        }
+        
+        .heading {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .content {
+            margin-top: 20px;
+            padding: 0 15px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .image {
+                flex-direction: column;
+            }
+            
+            .image img {
+                margin-right: 0;
+                margin-bottom: 15px;
+                width: 100%;
+            }
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: #c0392b;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .featured-story {
+                grid-template-columns: 1fr;
+            }
+            #events h2 {
+                margin-left: 20px;
+            }
+            
+            .featured-image {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+                z-index: 99;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 30px;
+                margin-bottom: 1rem;
+            }
+            
+            .newsletter-form button {
+                border-radius: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section {
+                margin-bottom: 3rem;
+            }
+            
+            .campus-map, .video-section {
+                height: 300px;
+            }
+        }
+        .map-wrapper {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+
+        .map-loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .map-loading.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .map-caption {
+            text-align: center;
+            padding: 1rem;
+            color: var(--primary);
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        .map-controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 2;
+            display: flex;
+            gap: 5px;
+        }
+
+        .map-control-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .map-control-btn:hover {
+            background-color: var(--secondary);
+        }
+        html {
+    font-size: 16px; /* Base font size for better scaling */
+}
+
+img {
+    max-width: 100%;
+    height: auto; /* Ensures images scale properly */
+}
+footer {
+    background: var(--color-bg1);
+    padding:5rem 0 0 0;
+    font-size: 0.9rem;
+}
+.footer__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5rem;
+}
+.footer__container > div h4 {
+    margin-bottom: 1.2rem;
+}
+.footer__1 p {
+ margin: 0 0 2rem;   
+}
+.footer ul li {
+    margin-bottom: 0 ;
+}
+.footer__socials {
+    font-size: 1.2rem;
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+
+.footer__copyright small {
+    position: relative;
+    left: 37rem;
+    display: block;
+    justify-content: center;
+    align-items: center;
+  text-align: center;
+  margin-top: 4rem;
+  padding: 1.2rem 0;
+  border-top: 1px solid var(--color-bg2);
+  font-size: 1.2rem;
+}
+/* Better container responsiveness */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+.imag {
+    border: 1px solid #ddd;
+    padding: 30px;
+}
+
+/* Improved media queries with multiple breakpoints */
+/* Large screens (desktops) */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .featured-story {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Medium screens (tablets) */
+@media (max-width: 992px) {
+    html {
+        font-size: 15px;
+    }
+    
+    .container {
+        max-width: 720px;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .logo {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .featured-story {
+        grid-template-columns: 1fr;
+    }
+    
+    .featured-image {
+        height: 400px;
+    }
+    
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .events-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Small screens (large phones) */
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .container {
+        max-width: 540px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .logo {
+        width: 100px;
+        height: 100px;
+    }
+    
+    /* Improved navigation for mobile */
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+        z-index: 99;
+    }
+    
+    .nav-links.active {
+        transform: translateY(0);
+    }
+    
+    .nav-links li {
+        margin: 0.8rem 0;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .nav-links li::after {
+        display: none;
+    }
+    
+    .nav-links a {
+        display: block;
+        padding: 0.5rem 0;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .news-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .events-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .newsletter-form input {
+        border-radius: 30px;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+    
+    .newsletter-form button {
+        border-radius: 30px;
+        width: 100%;
+    }
+    
+    .campus-map, .video-section {
+        height: 300px;
+    }
+    
+    .student-card {
+        padding: 1rem;
+    }
+}
+
+/* Extra small screens (small phones) */
+@media (max-width: 576px) {
+    html {
+        font-size: 13px;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    h1 {
+        font-size: 1.7rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .tagline {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .logo {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 0.8rem;
+    }
+    
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .section {
+        margin-bottom: 2rem;
+    }
+    
+    .featured-content {
+        padding: 1.5rem;
+    }
+    
+    .featured-content h3 {
+        font-size: 1.4rem;
+    }
+    
+    .news-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    .campus-map, .video-section {
+        height: 250px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .footer-section h4 {
+        margin-bottom: 1rem;
+    }
+    
+    .back-to-top {
+        width: 40px;
+        height: 40px;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+/* Improved fluid images and media */
+.featured-image img,
+.news-image img,
+.student-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Fix for campus photograph section */
+.campus-photograph-container {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.campus-photograph-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Improve font rendering */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fix for video modal on small screens */
+@media (max-width: 768px) {
+    .video-container {
+        width: 95%;
+        padding-top: 53.25%; /* 16:9 aspect ratio */
+    }
+    
+    .close-video {
+        top: 10px;
+        right: 10px;
+    }
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <a href="#" class="nav-logo">RCA</a>
+                <button class="mobile-menu-btn">☰</button>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#teachers">Members</a></li>
+                    <li><a href="#campus">Campus</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="../../../../../Pictures/Screenshots/Screenshot 2025-03-09 130708.png" alt="">
+                </div>
+                <h1>Rwanda Coding Academy</h1>
+                <p class="tagline">Shaping the future of technology in Rwanda</p>
+                <a href="#" class="cta-button">Apply Now</a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- About Section -->
+            <section id="about" class="section">
+                <div class="section-header">
+                    <h2 class="section-title">About Rwanda Coding Academy</h2>
+                    <p class="section-subtitle">Cultivating the next generation of tech leaders and innovators in Rwanda</p>
+                </div>
+                
+                <div class="featured-story">
+                    <div class="featured-image">
+                        <img src="./Screenshot 2025-03-08 155549.png" alt="Rwanda Coding Academy Campus">
+                    </div>
+                    <div class="featured-content">
+                        <h3>Building a Digital Future</h3>
+                        <p>Rwanda Coding Academy (RCA) is a specialized center of excellence that trains young Rwandan talents in software programming, embedded systems, and network security. Founded in 2019, the academy is an initiative of the Government of Rwanda to create a pool of technical talent to drive the country's digital transformation.</p>
+                        <p>Located in Nyabihu District, Western Province, the academy offers a three-year program for selected high-performing students who have demonstrated exceptional aptitude in mathematics, physics, and computer science. The curriculum is designed to equip students with practical skills and theoretical knowledge needed to excel in the tech industry.</p>
+                        <a href="#" class="read-more">Learn More</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- News Section -->
+            <section id="news" class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Latest News</h2>
+                    <p class="section-subtitle">Stay updated with the latest happenings at Rwanda Coding Academy</p>
+                </div>
+                
+                <div class="news-grid">
+                    <div class="news-card">
+                        <div class="news-image">
+                            <img src="./Screenshot 2025-03-09 143426.png" alt="News 1">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-date">March 5, 2025</span>
+                            <h3>RCA Students Win National Hackathon</h3>
+                            <p>A team of twenty students from Rwanda Coding Academy emerged victorious at the National Innovation Hackathon, presenting a groundbreaking solution for digital healthcare.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <div class="news-image">
+                            <img src="./Screenshot 2025-03-09 144021.png" alt="News 2">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-date">February 20, 2025</span>
+                            <h3>New Partnership with Tech Giants</h3>
+                            <p>Rwanda Coding Academy has signed a partnership agreement with major tech companies to provide internship opportunities and specialized training for students.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <div class="news-image">
+                            <img src="./image.png" alt="News 3">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-date">February 10, 2025</span>
+                            <h3>Expanded Curriculum for 2025</h3>
+                            <p>RCA has announced the expansion of its curriculum to include artificial intelligence, machine learning, and data science, reflecting the evolving demands of the tech industry.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Teacher and student insights Spotlight -->
+            <section id="teachers" class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Teacher Spotlight</h2>
+                    <p class="section-subtitle">Meet the brilliant minds shaping Rwanda's digital future</p>
+                </div>
+                
+                <div class="student-spotlight">
+                    <div class="students-slider">
+                        <div class="students-track">
+                            <div class="student-card">
+                                <div class="student-info">
+                                    <div class="student-avatar">
+                                        <img src="./Screenshot 2025-03-08 155040.png" alt="Student Avatar">
+                                    </div>
+                                    <div class="student-details">
+                                        <h4>Damascene</h4>
+                                        <span class="student-year">Teacher of Java</span>
+                                    </div>
+                                </div>
+                                <p>"At Rwanda Coding Academy, I found my passion for Programming. The hands-on approach to teacing and access to industry-standard tools has prepared me well for the challenges of the digital world. I recently completed an internship with a major security firm and am now working on my final project to develop an automated threat detection system."</p>
+                            </div>
+                            
+                            <div class="student-card">
+                                <div class="student-info">
+                                    <div class="student-avatar">
+                                        <img src="./Screenshot 2025-03-08 155055.png" alt="Student Avatar">
+                                    </div>
+                                    <div class="student-details">
+                                        <h4></h4>
+                                        <span class="student-year">Year 2 Student</span>
+                                    </div>
+                                </div>
+                                <p>"The supportive community at RCA has been instrumental in my growth as a software developer. I've been able to collaborate with like-minded peers and receive mentorship from experienced instructors. Currently, I'm leading a team developing a mobile application to connect farmers with markets, which won the regional innovation challenge."</p>
+                            </div>
+                            
+                            <div class="student-card">
+                                <div class="student-info">
+                                    <div class="student-avatar">
+                                        <img src="./Screenshot 2025-03-08 155110.png" alt="Student Avatar">
+                                    </div>
+                                    <div class="student-details">
+                                        <h4>Eric Manzi</h4>
+                                        <span class="student-year">Year 3 Student</span>
+                                    </div>
+                                </div>
+                                <p>"The emphasis on real-world projects at RCA has been the highlight of my experience. From my first year, I've been working on solutions for actual problems. Last summer, I interned at a fintech startup where I applied my skills in embedded systems. I'm graduating soon and already have multiple job offers from top tech companies in Rwanda."</p>
+                            </div>
+                            <div class="student-card">
+                                <div class="student-info">
+                                    <div class="student-avatar">
+                                        <img src="./Screenshot 2025-03-10 200458.png" alt="Student Avatar">
+                                    </div>
+                                    <div class="student-details">
+                                        <h4>Bruce NIYIGABA</h4>
+                                        <span class="student-year">Year 3 Student</span>
+                                    </div>
+                                </div>
+                                <p>"The school where all people are born to code in order to develop the country and being problem solvers for the national and internation problems for good world"</p>
+                            </div>
+                            <div class="student-card">
+                                <div class="student-info">
+                                    <div class="student-avatar">
+                                        <img src="./Screenshot 2025-03-10 200432.png" alt="Student Avatar">
+                                    </div>
+                                    <div class="student-details">
+                                        <h4>Eric Manzi</h4>
+                                        <span class="student-year">Year 3 Student</span>
+                                    </div>
+                                </div>
+                                <p>"Students who come from this school gain much knowledge in Software programming and embedded systems. Ready to help the world with skills got from this school and improve people's lives."</p>
+                            </div>
+                            <div class="student-card">
+                                <div class="student-info">
+                                    <div class="student-avatar">
+                                        <img src="./Screenshot 2025-03-10 200233.png" alt="Student Avatar">
+                                    </div>
+                                    <div class="student-details">
+                                        <h4>Keza Kelia</h4>
+                                        <span class="student-year">Year 2 Student</span>
+                                    </div>
+                                </div>
+                                <p>"hello sir,
+                                    I am called UWIMPUHWE Sonia, I have fifteen years old After graduating in my third year of high school I took the exam with a score of 10 as you can see from … More"</p>
+                            </div>
+                            <div class="student-card">
+                                <div class="student-info">
+                                    <div class="student-avatar">
+                                        <img src="./Screenshot 2025-03-08 155110.png" alt="Student Avatar">
+                                    </div>
+                                    <div class="student-details">
+                                        <h4>NIYONKURU Darius</h4>
+                                        <span class="student-year">Year 1A Student</span>
+                                    </div>
+                                </div>
+                                <p>"Here there are many activities which helped me to know where I am coming from and where I am going towards in order to have good life, like Ilead program,Itorero, studying stuffs and many other things....."</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="slider-controls">
+                        <div class="slider-control prev">❮</div>
+                        <div class="slider-control next">❯</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Campus aerial photograph -->
+             <div id="campus">
+             <section class="campus-photograph">
+                <div class="container">
+                    <div class="campus-photograph-container">
+                        <h2>Rwanda Coding Academy design</h2>
+                        <img src="./Screenshot 2025-03-10 191729.png" alt="">
+                    </div>
+                </div>
+            </div>
+        
+</div>
+<!-- Events which take place in Rwanda Coding Academy -->
+<div class="container" id="events">
+    <h2>Main events in Rwanda Coding Academy 2025-2026</h2>
+    
+    <div class="event_1">
+        <div class="heading">
+           <h3>Production of Autonomous vehicles</h3>
+        </div>
+        <div class="image">
+            <div class="imag">
+                <img src="./Leonardo_Lightning_XL_create_an_image_showing_autonomous_vehic_0.jpg" alt="Year one students working on autonomous vehicle">
+                <p>This is being done by year one students lead by Divin Furaha from the beginning of the year.</p>
+            </div>
+            <div class="imag">
+                <img src="./Leonardo_Lightning_XL_create_an_image_showing_autonomous_vehic_1.jpg" alt="Year two students working on autonomous vehicle">
+                <p>This is being done by year two students lead by Abayo Jovin from the beginning of the year.</p>
+            </div>
+            <div class="imag">
+                <img src="./Leonardo_Lightning_XL_create_an_image_showing_autonomous_vehic_2.jpg" alt="Year three students working on autonomous vehicle">
+                <p>This is being done by year three students lead by Ishimwe Peace from the beginning of the year.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="event_1">
+        <div class="heading">
+        <h3>Production of Artificial Rainfall</h3>
+        </div>
+        <div class="image">
+          <div class="imag">
+              <img src="./Leonardo_Lightning_XL_create_an_image_showing_aritifical_rain_0.jpg" alt="Cloud seeding technology">
+              <p>Students developing cloud seeding technology to induce rainfall in drought-prone areas of Rwanda.</p>
+          </div>
+          <div class="imag">
+              <img src="./Leonardo_Lightning_XL_create_an_image_showing_aritifical_rain_1.jpg" alt="Field testing of rainfall equipment">
+              <p>Field testing the artificial rainfall equipment in partnership with the Rwanda Meteorology Agency.</p>
+          </div>
+          <div class="imag">
+              <img src="./Leonardo_Lightning_XL_create_an_image_showing_aritifical_rain_2.jpg" alt="Results demonstration">
+              <p>Successful demonstration of the artificial rainfall system with government officials in attendance.</p>
+          </div>
+        </div>
+        <div class="content">
+            <p>The Artificial Rainfall project is a groundbreaking initiative led by senior students at Rwanda Coding Academy. Using advanced meteorological algorithms and drone technology, students have developed a sustainable solution to address agricultural challenges during dry seasons. This innovation has already attracted interest from neighboring countries facing similar climate challenges.</p>
+        </div>
+    </div>
+    
+    <div class="event_1">
+        <div class="heading">
+         <h3>Construction of the University of Rwanda Coding Academy</h3>
+        </div>
+        <div class="image">
+            <div class="imag">
+                <img src="./Screenshot 2025-03-11 114607.png" alt="Construction phase 1">
+                <p>Initial groundbreaking ceremony with Rwanda's Minister of Education and technology industry partners.</p>
+            </div>
+            <div class="imag">
+                <img src="./Screenshot 2025-03-11 114522.png" alt="Construction phase 2">
+                <p>Construction of the main academic building featuring state-of-the-art laboratories and learning spaces.</p>
+            </div>
+            <div class="imag">
+                <img src="./Screenshot 2025-03-11 053600.png" alt="Completed campus rendering">
+                <p>Digital rendering of the completed campus expected to host 500 students by 2027.</p>
+            </div>
+        </div>
+        <div class="content">
+            <p>The University of Rwanda Coding Academy represents the next evolution in technology education for Rwanda. This purpose-built campus will expand on the success of Rwanda Coding Academy by offering advanced degrees in Software Engineering, AI & Machine Learning, and Digital Innovation. Construction began in January 2025 with funding from both government and private sector partners, reflecting Rwanda's commitment to becoming a technology hub for East Africa.</p>
+        </div>
+    </div>
+ </div>
+</main>
+
+<footer class="footer">
+    <div class="container footer__container">
+        <div class="footer__1">
+            <a href="index.html" class="footer__logo"><h4>PRECIEUX</h4></a>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quos impedit illum sapiente repudiandae eum. Dolore hic obcaecati iusto inventore quos, maiores iure.There are many languages I have got from this website that are always helpin me to catch up with all courses at al the times. Let us team together for the growth of the programming culture.!!!!!!!!!.*******</p>
+        </div>
+        <div class="footer__2">
+            <h4>Permalinks</h4>
+            <ul class="permalinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="study.html">Courses</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer__3">
+            <h4>Privacy</h4>
+            <ul class="privacy">
+            <li><a href="#">Policy</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Promotions</a></li>
+            <li><a href="#">Togetherness</a></li>
+            <li><a href="#">Team work</a></li>
+            <li><a href="#">Protection</a></li>
+            </ul>
+        </div>
+        <div class="footer__4" id="contact__us">
+
+            <h4>Contact Us</h4>
+            <div>
+                <p>+250 788 598 775</p>
+                <p>isaprecieux112@gmail.com</p>
+            </div>
+            <ul class="footer__socials">
+                <li><a href="http://www.faccebook.com/Isaa.c_250" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
+                <li><a href="http://www.instagram.com/Isaa.c_250" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+                <li><a href="http://www.github.com/Isaac-1-lang"><i class="fa-brands fa-github" ></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-tiktok"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-whatsapp"></i></a></li>
+        </div>
+        <div class="footer__copyright">
+            <small>CopyRight &copy;Isaac 2025-Infinity</small>
+        </div>
+    </div>
+ </footer>
+<script>
+    // Add this JavaScript to improve responsive behavior
+
+// Mobile menu toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            // Toggle menu icon
+            mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+        
+        // Close menu when clicking on a link
+        const links = navLinks.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.textContent = '☰';
+            });
+        });
+    }
+    
+    // Back to top button functionality
+    const backToTopBtn = document.querySelector('.back-to-top') || createBackToTopButton();
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+    });
+    
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Student spotlight slider functionality
+    const prevBtn = document.querySelector('.slider-control.prev');
+    const nextBtn = document.querySelector('.slider-control.next');
+    const track = document.querySelector('.students-track');
+    
+    if (prevBtn && nextBtn && track) {
+        let slideIndex = 0;
+        const slides = track.querySelectorAll('.student-card');
+        const slideCount = slides.length;
+        
+        // Responsive slide width calculation
+        function updateSlideWidth() {
+            const trackWidth = track.parentElement.offsetWidth;
+            slides.forEach(slide => {
+                slide.style.flex = `0 0 ${trackWidth}px`;
+            });
+            // Update track position after resize
+            track.style.transform = `translateX(-${slideIndex * 100}%)`;
+        }
+        
+        updateSlideWidth();
+        window.addEventListener('resize', updateSlideWidth);
+        
+        nextBtn.addEventListener('click', function() {
+            slideIndex = (slideIndex + 1) % slideCount;
+            track.style.transform = `translateX(-${slideIndex * 100}%)`;
+        });
+        
+        prevBtn.addEventListener('click', function() {
+            slideIndex = (slideIndex - 1 + slideCount) % slideCount;
+            track.style.transform = `translateX(-${slideIndex * 100}%)`;
+        });
+        
+        // Auto-advance the slider
+        setInterval(() => {
+            slideIndex = (slideIndex + 1) % slideCount;
+            track.style.transform = `translateX(-${slideIndex * 100}%)`;
+        }, 5000);
+    }
+});
+
+// Create back to top button if it doesn't exist
+function createBackToTopButton() {
+    const btn = document.createElement('div');
+    btn.className = 'back-to-top';
+    btn.innerHTML = '↑';
+    document.body.appendChild(btn);
+    return btn;
+}
+
+// Handle responsive images
+function handleResponsiveImages() {
+    const images = document.querySelectorAll('img');
+    
+    images.forEach(img => {
+        // Add loading attribute for better performance
+        img.setAttribute('loading', 'lazy');
+        
+        // Add error handler to prevent broken images
+        img.addEventListener('error', function() {
+            this.style.display = 'none';
+        });
+    });
+}
+
+// Initialize responsive image handling
+document.addEventListener('DOMContentLoaded', handleResponsiveImages);
+
+// Add viewport height fix for mobile browsers
+function setMobileViewportHeight() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+window.addEventListener('resize', setMobileViewportHeight);
+setMobileViewportHeight();
+</script>
+</body>
+</html>
